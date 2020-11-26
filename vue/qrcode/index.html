@@ -1,0 +1,45 @@
+<!-- npm run qrcode -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.min.js"></script>
+    <script src="js/qrious.min.js"></script> <!--biblioteca que gera o QRcode-->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Gerador de QRCode</title>
+</head>
+
+<body>
+    <div id="app">  
+        <h1>{{ title }}</h1>
+        <div>
+            <input type="text" size="25"
+                placeholder="Digite para gerar..."
+                v-model="text"> <!--v-model atualiza enqunto está sendo digitado-->
+        </div>
+
+        <div v-if="text" class="output"> <!--quando o texto estiver digitado apresenta o QRcode-->
+            <img :src="newQRCode" alt="QRCode">
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                title: 'Gerador QRCode',
+                text: 'https://www.cod3r.com.br',
+                qrcode: new QRious({ size: 300 }) //instancia o QRcode 
+            },
+            computed: { // texto calculado (a cada texto digitado gera um novo QRcode)
+                newQRCode() {
+                    this.qrcode.value = this.text
+                    return this.qrcode.toDataURL()
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+yarn global add @vue/cli
+
+vue create calculator
+
+cd calculator 
+yarn run serve

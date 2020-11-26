@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Binding</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <p>{{ link }}</p>
+        <p><a href="{{ link }}">Canal?</a></p>  <!--não funciona sem a diretiva do bind-->
+        <p><a v-bind:href="link">Canal</a></p> <!--esse funciona pq tem a diretiva v-bin 
+            para fazer a interpolação-->
+        <p><a :href="link">Canal</a></p> <!--forma reduzida de fazer um bind, apenas com :-->
+        <p>
+            <input type="text" v-model="nome"><br> <!--a diretiva v-model gera atualizações nas 
+                duas direções-->
+            <span>{{ nome }}</span>
+        </p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                nome: "Maria",
+                link: "https://youtube.com/cod3rcursos"
+            },
+            watch: { // permite criar funções  utilizando e atualizando em cima de um 
+                //atributo já existente (toda a vez que ele for atualizado, chama a função)
+                nome(novoValor) {
+                    console.log(novoValor.toUpperCase())
+                }
+            }
+        })
+    </script>
+</body>
+</html>
