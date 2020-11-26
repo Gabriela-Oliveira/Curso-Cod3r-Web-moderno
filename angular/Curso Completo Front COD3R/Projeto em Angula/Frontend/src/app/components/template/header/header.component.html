@@ -1,0 +1,17 @@
+<!-- criado com o comando ng generate component components/template/header, inserido no cmd -->
+
+<mat-toolbar class="header mat-elevation-z4">
+    <span>
+        <a routerLink="/"> <!--quando clica na logo volta para a pasta home-->
+            <img class="logo" src="assets/img/logo.png" alt="logo">
+        </a>
+    </span>
+    <span class="title-group">
+        <a routerLink="{{ routeUrl }}">
+            <i class="material-icons">
+                {{ icon }}
+            </i>
+            {{ title }}
+        </a>
+    </span>
+</mat-toolbar>
